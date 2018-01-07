@@ -49,5 +49,5 @@ document.getElementById("submitButton").onclick = function(){
 		}
 	});
 
-	document.location.href = 'visualize?username=test3';
+	document.location.href = 'visualize?username=' + document.getElementById('name').value;
 }
