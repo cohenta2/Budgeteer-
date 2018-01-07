@@ -1,0 +1,31 @@
+<resources>
+    <!--Application name in the header bar -->
+    <string name="app_name">Budgeteer!</string>
+
+    <!--String used main activity textview -->
+    <string name="enter_username">Please Enter Your Username:</string>
+
+    <!--String used as hint for EditTextView main activity  -->
+    <string name="enter_username_hint">Username...</string>
+
+    <!--String used for submit buttons on main activity and budget input activity -->
+    <string name="submit">Submit!</string>
+
+    <!--Used in budget activity -->
+    <string name="income">Income:</string>
+
+    <!--Used in budget activity -->
+    <string name="rent">Rent:</string>
+
+    <!--Used in budget activity -->
+    <string name="food">Food Costs:</string>
+
+    <!--Used in budget activity -->
+    <string name="transportation">Transportation Costs:</string>
+
+    <!--Used in budget activity -->
+    <string name="recreation">Recreation Costs:</string>
+
+    <!--Used for edit text fields in budget activity -->
+    <string name="enter">Enter amount...</string>
+</resources>
