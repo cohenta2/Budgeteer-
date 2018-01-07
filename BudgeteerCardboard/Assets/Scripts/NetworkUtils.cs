@@ -12,14 +12,9 @@ namespace Assets.Scripts
 
         private UserBudget userBudget;
 
-        void Awake()
+        public IEnumerator getInfoFromHttpRequest()
         {
-            StartCoroutine(getBudgetFromHttpRequest());
-        }
-
-        public IEnumerator getBudgetFromHttpRequest()
-        {
-            UnityWebRequest www = UnityWebRequest.Get("https://6kah5l5nc2.execute-api.us-east-1.amazonaws.com/dev?username=test3");
+            UnityWebRequest www = UnityWebRequest.Get("https://6kah5l5nc2.execute-api.us-east-1.amazonaws.com/dev?username=Alafran");
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)

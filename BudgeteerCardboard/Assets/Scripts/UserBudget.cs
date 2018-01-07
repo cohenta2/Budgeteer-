@@ -8,11 +8,11 @@ namespace Assets.Scripts
     [Serializable]
     public class UserBudget
     {
-        public int food;
-        public int recreation;
-        public int rent;
+        public double food;
+        public double recreation;
+        public double rent;
         public string username;
-        public int transportation;
-        public int income;
+        public double transportation;
+        public double income;
     }
 }
