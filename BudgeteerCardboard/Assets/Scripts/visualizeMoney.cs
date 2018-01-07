@@ -40,18 +40,20 @@ namespace Assets.Scripts
             incomeValue.text = userBudget.income.ToString("C");
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        
         string getUserName()
         {
             AndroidJavaClass pluginClass = new AndroidJavaClass("com.example.coreysutphin.budgeteer");
-            return pluginClass.CallStatic<string>("getUsername");
+            if (pluginClass.CallStatic<string>("getUsername").Equals(""))
+            {
+                return "test3";
+            }
+            else
+            {
+                Debug.Log("username: " + pluginClass.CallStatic<string>("getUsername"));
+                incomeValue.text = pluginClass.CallStatic<string>("getUsername");
+                return pluginClass.CallStatic<string>("getUsername");
+            }
+
         }
-        
     }
 }
