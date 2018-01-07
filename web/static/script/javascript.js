@@ -41,13 +41,12 @@ document.getElementById("submitButton").onclick = function(){
 	    data:  JSON.stringify(inputData),
 		contentType: 'application/json; charset=utf-8',
 	    success: function (response) {
-			console.log(response);
+				console.log(response);
+				document.location.href = 'visualize?username=' + document.getElementById('name').value;
 	    },
 	    error: function (xhr, exception) {
 			console.log(xhr);
 			console.log("error");
 		}
 	});
-
-	document.location.href = 'visualize?username=' + document.getElementById('name').value;
 }
