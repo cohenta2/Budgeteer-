@@ -109,5 +109,11 @@
         android:text="@string/submit"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/visualize_button"
+        android:text="@string/visualize"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

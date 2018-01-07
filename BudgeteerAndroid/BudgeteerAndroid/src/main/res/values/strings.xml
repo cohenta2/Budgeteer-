@@ -28,4 +28,7 @@
 
     <!--Used for edit text fields in budget activity -->
     <string name="enter">Enter amount...</string>
+
+    <!--Used for the visualize button in budget activity -->
+    <string name="visualize">Visualize!</string>
 </resources>

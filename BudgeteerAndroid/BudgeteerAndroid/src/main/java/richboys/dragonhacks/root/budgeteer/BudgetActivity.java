@@ -10,6 +10,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +34,7 @@ public class BudgetActivity extends AppCompatActivity {
     private Double[] userInputs;
     private List<EditText> editTextFields;
     private String userName;
+    private JSONObject jsonToSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +53,10 @@ public class BudgetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.userName = intent.getExtras().getString("userNameToPass");
 
+        final TextView testView = (TextView) findViewById(R.id.testView);
 
         //Assigns objects to each of the interactable views in the layout
+        Button visualizeButton = (Button) findViewById(R.id.visualize_button);
         Button budgetActivitySubmitButton = (Button) findViewById(R.id.budget_submit_button);
         EditText incomeInputField = (EditText) findViewById(R.id.income_input_field);
         EditText rentInputField = (EditText) findViewById(R.id.rent_input_field);
@@ -66,7 +80,7 @@ public class BudgetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean allInputsFilled = true;
-                for (int i =0; i < editTextFields.size(); i++) {
+                for (int i = 0; i < editTextFields.size(); i++) {
                     String textInput = editTextFields.get(i).getText().toString();
                     if (textInput.matches("")) {
                         Toast toast = Toast.makeText(getApplicationContext(), "One or more fields is empty", Toast.LENGTH_SHORT);
@@ -75,18 +89,72 @@ public class BudgetActivity extends AppCompatActivity {
                         break;
                     } else {
                         userInputs[i] = Double.parseDouble(textInput);
-                        if(allInputsFilled) {
-                            initializeUserBudget();
-                        }
+                    }
+                }
+                if (allInputsFilled) {
+                    initializeUserBudget();
+                    try {
+                        postJSON();
+                    } catch (Exception e) {
+                        Log.d("JSON method call", "fuuuuck");
                     }
                 }
 
             }
         });
+
+        /*
+        Attaches an on click listener to the visualize button
+        On click it launches the VR app with a username attached
+        The VR app will pull the info based on the username given
+         */
+        visualizeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = getPackageManager().getLaunchIntentForPackage("google.gvr.wa");
+                    intent.putExtra("username",userName);
+                    startActivity(intent);
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
 
     public void initializeUserBudget() {
-        this.userBudget = new UserBudget(this.userName,userInputs[0],
-                userInputs[1],userInputs[2],userInputs[3],userInputs[4]);
+        this.userBudget = new UserBudget(this.userName, userInputs[0],
+                userInputs[1], userInputs[2], userInputs[3], userInputs[4]);
+    }
+
+    public void postJSON() throws Exception {
+        TextView testView = (TextView) findViewById(R.id.testView);
+        final Gson gson = new Gson();
+        String jsonToConvert = gson.toJson(this.userBudget);
+        testView.setText(jsonToConvert);
+        this.jsonToSend = new JSONObject(jsonToConvert);
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://6kah5l5nc2.execute-api.us-east-1.amazonaws.com/dev";
+
+// Request a string response from the provided URL.
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (JsonObjectRequest.Method.POST, url, this.jsonToSend, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Display the first 500 characters of the response string.
+                        TextView testView = (TextView) findViewById(R.id.testView);
+                        testView.setText("Worked");
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        TextView testView = (TextView) findViewById(R.id.testView);
+                        testView.setText("Didnt work");
+                    }
+                });
+// Add the request to the RequestQueue.
+        queue.add(jsObjRequest);
     }
 }
