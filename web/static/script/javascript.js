@@ -42,7 +42,7 @@ document.getElementById("submitButton").onclick = function(){
 		contentType: 'application/json; charset=utf-8',
 	    success: function (response) {
 				console.log(response);
-				document.location.href = 'visualize?username=' + document.getElementById('name').value;
+				document.location.href = 'visualize_menu?username=' + document.getElementById('name').value;
 	    },
 	    error: function (xhr, exception) {
 			console.log(xhr);

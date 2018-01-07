@@ -9,6 +9,12 @@ app = Flask(__name__)
 def hello_world():
     return render_template('home.html', name='home')
 
+
+@app.route('/visualize_menu')
+def visualize_menu():
+    username = request.args.get('username')
+    return render_template('visualize_menu.html',username=username, name='visualize_menu')
+
 @app.route('/visualize')
 def visualize():
     username = request.args.get('username')
