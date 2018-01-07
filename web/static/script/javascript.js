@@ -3,11 +3,11 @@ var API_ENDPOINT = "https://6kah5l5nc2.execute-api.us-east-1.amazonaws.com/dev"
 document.getElementById("submitButton").onclick = function(){
 	var inputData = {
 		"username" : document.getElementById('name').value,
-		"income" : document.getElementById('income').value,
-		"rent" : document.getElementById('rent').value,
-		"food" : document.getElementById('food').value,
-		"transportation" : document.getElementById('transportation').value,
-		"recreation" : document.getElementById('recreation').value
+		"income" : parseFloat(document.getElementById('income').value),
+		"rent" : parseFloat(document.getElementById('rent').value),
+		"food" : parseFloat(document.getElementById('food').value),
+		"transportation" : parseFloat(document.getElementById('transportation').value),
+		"recreation" : parseFloat(document.getElementById('recreation').value)
 	};
 
 	// $.ajax({
