@@ -1,1 +1,1 @@
-include ':BudgeteerAndroid'
+include ':BudgeteerAndroid', ':plugin', ':unitydependencies'

@@ -10,14 +10,16 @@ namespace Assets.Scripts
     // Handles visualization/animation of the money stacks based on a user's budget
     public class visualizeMoney : MonoBehaviour
     {
+        private string username;
+
         // Text objects are bound in Unity environment
-        private UserBudget userBudget;
         public Text foodValue;
         public Text recreationValue;
         public Text rentValue;
         public Text transportationValue;
         public Text incomeValue;
 
+        private UserBudget userBudget;
         private NetworkUtils networkUtils;
 
         // initialize all text objects based on user's budget
@@ -25,8 +27,10 @@ namespace Assets.Scripts
         {
             networkUtils = GetComponent<NetworkUtils>();
             networkUtils.enabled = true;
+            username = getUserName();
+            Debug.Log(username);
             // Ensures we get the data before modifying UI
-            yield return StartCoroutine(networkUtils.getInfoFromHttpRequest());
+            yield return StartCoroutine(networkUtils.getInfoFromHttpRequest(username));
             userBudget = networkUtils.getBudgetForUser();
 
             foodValue.text = userBudget.food.ToString("C");
@@ -42,17 +46,12 @@ namespace Assets.Scripts
 
         }
 
-        /* UNDER DEVELOPMENT
-        void getUserName()
+        
+        string getUserName()
         {
-            AndroidJavaClass UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-            AndroidJavaObject intent = currentActivity.Call<AndroidJavaObject>("getIntent");
-            AndroidJavaObject extras = intent.Call<AndroidJavaObject>("getExtras");
-            string arguments = extras.Call<string>("getString", "arguments");
-            Debug.Log(arguments);
+            AndroidJavaClass pluginClass = new AndroidJavaClass("com.example.coreysutphin.budgeteer");
+            return pluginClass.CallStatic<string>("getUsername");
         }
-        */
+        
     }
 }
