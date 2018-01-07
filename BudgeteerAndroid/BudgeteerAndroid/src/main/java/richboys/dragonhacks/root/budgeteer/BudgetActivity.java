@@ -96,7 +96,7 @@ public class BudgetActivity extends AppCompatActivity {
                     try {
                         postJSON();
                     } catch (Exception e) {
-                        Log.d("JSON method call", "fuuuuck");
+
                     }
                 }
 
@@ -128,10 +128,8 @@ public class BudgetActivity extends AppCompatActivity {
     }
 
     public void postJSON() throws Exception {
-        TextView testView = (TextView) findViewById(R.id.testView);
         final Gson gson = new Gson();
         String jsonToConvert = gson.toJson(this.userBudget);
-        testView.setText(jsonToConvert);
         this.jsonToSend = new JSONObject(jsonToConvert);
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -143,15 +141,11 @@ public class BudgetActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Display the first 500 characters of the response string.
-                        TextView testView = (TextView) findViewById(R.id.testView);
-                        testView.setText("Worked");
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        TextView testView = (TextView) findViewById(R.id.testView);
-                        testView.setText("Didnt work");
                     }
                 });
 // Add the request to the RequestQueue.

@@ -9,7 +9,7 @@
     <string name="enter_username_hint">Username...</string>
 
     <!--String used for submit buttons on main activity and budget input activity -->
-    <string name="submit">Submit!</string>
+    <string name="submit">Submit</string>
 
     <!--Used in budget activity -->
     <string name="income">Income:</string>
