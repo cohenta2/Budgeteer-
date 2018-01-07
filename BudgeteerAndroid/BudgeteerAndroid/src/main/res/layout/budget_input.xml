@@ -12,9 +12,11 @@
         android:layout_marginTop="16dp">
 
         <TextView
+            android:id="@+id/testView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/income"
+            android:textStyle="bold"
             android:padding="16dp" />
         <EditText
             android:id="@+id/income_input_field"
@@ -33,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rent"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/rent_input_field"
             android:layout_width="wrap_content"
@@ -51,7 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/food"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/food_input_field"
             android:layout_width="wrap_content"
@@ -69,7 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transportation"
-            android:padding="16dp"/>
+            android:padding="16dp"
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/transportation_input_field"
             android:layout_width="wrap_content"
@@ -88,13 +93,12 @@
             android:layout_height="wrap_content"
             android:text="@string/recreation"
             android:padding="16dp"
-            />
+            android:textStyle="bold"/>
         <EditText
             android:id="@+id/recreation_input_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/enter"
-
             />
     </LinearLayout>
 
