@@ -5,7 +5,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>{%  block  title  %}{% endblock %}Finance Data</title>
-      <script src="{{ url_for('static', filename='javascript.js')}}" type="text/javascript"></script>
+      <script src="{{ url_for('static', filename='script/javascript.js')}}" type="text/javascript"></script>
+  		<script type="text/javascript" src="{{ url_for('static', filename='script/jquery-3.2.1.min.js')}}"></script>
       <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
       <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
       <link rel="stylesheet" href="{{ url_for('static', filename='styles/side-menu-old-ie.css') }}">
@@ -38,6 +39,7 @@
 </div>
 
 <script src="js/ui.js"></script>
+<script src="static/script/ui.js"></script>
     <div class="content">{% block content %} {% endblock %}</div>
 
   </body>
