@@ -33,13 +33,11 @@
 		<script src="static/script/stats.min.js"></script>
 
 		<script>
-      var username = '{{data["username"]}}';
-      alert(username);
-      var income = 100000;
-      var rent = 2000;
-      var food = 200;
-      var transportation = 150;
-      var recreation = 400;
+      var income = {{data["income"]}};
+      var rent = {{data["rent"]}};
+      var food = {{data["food"]}};
+      var transportation = {{data["transportation"]}};
+      var recreation = {{data["recreation"]}};
 			var container, stats;
 			var camera, controls, scene, renderer;
 			var pickingData = [], pickingTexture, pickingScene;
