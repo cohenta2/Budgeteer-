@@ -15,7 +15,7 @@ namespace Assets.Scripts
         public IEnumerator getInfoFromHttpRequest(string username)
         {
             string url = "https://6kah5l5nc2.execute-api.us-east-1.amazonaws.com/dev?username=" + username;
-            UnityWebRequest www = UnityWebRequest.Get("Alafran");
+            UnityWebRequest www = UnityWebRequest.Get(url);
             yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
