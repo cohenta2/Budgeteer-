@@ -141,11 +141,15 @@ public class BudgetActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Display the first 500 characters of the response string.
+                        Toast toast = Toast.makeText(BudgetActivity.this,"Success!",Toast.LENGTH_SHORT);
+                        toast.show();
 
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast toast = Toast.makeText(BudgetActivity.this,"Submission failed!",Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 });
 // Add the request to the RequestQueue.
